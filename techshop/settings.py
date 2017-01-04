@@ -14,15 +14,13 @@ import os.path
 from django.conf.urls import patterns, url, include
 from oscar.defaults import *
 from oscar import get_core_apps
-
+from oscar import OSCAR_MAIN_TEMPLATE_DIR
 import os
-location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', x)
-TEMPLATE_DIRS = (
-    location('templates'),
-)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+print BASE_DIR
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,14 +81,14 @@ HAYSTACK_CONNECTIONS = {
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://127.0.0.1:8983/solr',
+        'URL': 'http://127.0.0.1:8000/solr',
         'INCLUDE_SPELLING': True,
     },
 }
 
 ROOT_URLCONF = 'techshop.urls'
 
-from oscar import OSCAR_MAIN_TEMPLATE_DIR
+
 
 TEMPLATES = [
     {
@@ -171,9 +169,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+#Oscar Shop Settings Start
+
+OSCAR_SHOP_NAME = 'Best Buy'
+OSCAR_SHOP_TAGLINE = 'Shopping at its best'
+
+#Oscar Shop Settings End
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
+
+
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join("static/"),
+    '/techshop/static/',
+]
+print STATICFILES_DIRS

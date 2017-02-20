@@ -19,7 +19,6 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
-print BASE_DIR
 
 
 
@@ -93,10 +92,7 @@ ROOT_URLCONF = 'techshop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            OSCAR_MAIN_TEMPLATE_DIR
-        ],
+        'DIRS': [ 'templates', OSCAR_MAIN_TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,6 +110,7 @@ TEMPLATES = [
         },
     },
 ]
+print TEMPLATES
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -137,6 +134,7 @@ DATABASES = {
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -156,6 +154,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -171,8 +170,8 @@ USE_TZ = True
 
 #Oscar Shop Settings Start
 
-OSCAR_SHOP_NAME = 'Best Buy'
-OSCAR_SHOP_TAGLINE = 'Shopping at its best'
+OSCAR_SHOP_NAME = 'Mobileaholic'
+OSCAR_SHOP_TAGLINE = 'Shop like never before'
 
 #Oscar Shop Settings End
 
@@ -188,4 +187,3 @@ STATICFILES_DIRS = [
     os.path.join("static/"),
     '/techshop/static/',
 ]
-print STATICFILES_DIRS
